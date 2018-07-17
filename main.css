@@ -1,0 +1,12 @@
+img{
+    width: 33vw;
+    height: 25vh;
+}
+.answerSection{
+    display: flex;
+    justify-content: space-around;
+}
+.answerTitles{
+    display: flex;
+    justify-content: space-around;
+}
