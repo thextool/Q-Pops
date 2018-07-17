@@ -1,3 +1,8 @@
+let rng = 0
+const answer = document.querySelector('#answer')
+const answerList = document.querySelector('.answerList')
+const h1El = document.getElementById('randomQuote')
+
 function getBreakingBadQuote() {
     const url = "https://breaking-bad-quotes.herokuapp.com/v1/quotes"
     fetch(url)
@@ -15,21 +20,20 @@ function getRonSwansonQuote() {
 }
 
 function randomNumberGenerator() {
-    return randomNumber = Math.floor((Math.random() * 10) + 1)
+    return Math.floor((Math.random() * 10) + 1)
 }
 
 function selectAPI() {
-    return randomNumberGenerator() % 2 == 0 ? getBreakingBadQuote() : getRonSwansonQuote()
+    rng = randomNumberGenerator()
+    return rng % 2 == 0 ? getBreakingBadQuote() : getRonSwansonQuote()
 }
 
 selectAPI()
 
 function appendQuoteRon(quote) {
-    const h1El = document.getElementById('randomQuote')
     h1El.innerText = quote
 }
 function appendQuoteBreaking(quote) {
-    const h1El = document.getElementById('randomQuote')
     h1El.innerText = quote[0].quote
 }
 
@@ -41,4 +45,34 @@ function changeQuoteButton() {
 }
 
 changeQuoteButton()
+
+function breakingBadGuessListener() {
+    const guessButton = document.querySelector('#breakingGuess')
+    guessButton.addEventListener('click', event => {
+        rng % 2 == 0 ? correctAnswer(): answer.innerHTML = "wrong"
+    })
+}
+
+breakingBadGuessListener()
+
+function ronGuessListener() {
+    const guessButton = document.querySelector('#ronGuess')
+    guessButton.addEventListener('click', event => {
+        rng % 2 == 1 ? correctAnswer() : answer.innerHTML = "wrong"
+    })
+}
+
+function correctAnswer() {
+    answer.innerText = "correct"
+    createAnswerListEl(`${h1El.innerText} Correct`)
+}
+
+function createAnswerListEl(quote) {
+    let listEl = document.createElement('li')
+    listEl.innerText = quote 
+    answerList.appendChild(listEl)
+}
+
+ronGuessListener()
+
 
