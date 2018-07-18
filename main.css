@@ -1,6 +1,24 @@
+body {
+    background: lightblue;
+    height: 150vh;
+}
+header{
+    background: rgb(170, 162, 162);
+    width: 100vw;
+    height: 10vh;  
+    padding-left: 5vw;
+}
+main{
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
 img{
     width: 33vw;
     height: 25vh;
+}
+.intro{
+    background: rgb(170, 162, 162);
+    padding: 40px;
 }
 .answerSection{
     display: flex;
@@ -10,8 +28,22 @@ img{
     display: flex;
     justify-content: space-around;
 }
-
 h1{
-    color: red;
-
+    color:darkblue;
+    margin-top: 0%;
+}
+.intro{
+    margin: 5vw;
+}
+.quoteAndButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.guesses{
+    background: rgb(170, 162, 162);
+    padding: 10px;
+    color:darkblue;
+    text-decoration: underline;
+    
 }

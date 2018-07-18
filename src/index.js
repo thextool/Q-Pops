@@ -43,6 +43,7 @@ selectAPI()
 function appendQuoteRon(quote) {
     h1El.innerText = `"${quote}"`
 }
+
 function appendQuoteBreaking(quote) {
     h1El.innerText = `"${quote[0].quote}"`
 }
@@ -64,7 +65,7 @@ changeQuoteButton()
 function breakingBadGuessListener() {
     const guessButton = document.querySelector('#breakingGuess')
     guessButton.addEventListener('click', event => {
-        rng % 2 == 0 ? correctAnswer(): wrongAnswer()
+        rng % 2 == 0 ? correctAnswer('from Breaking Bad'): wrongAnswer('Ron Swanson')
     })
 }
 
@@ -73,26 +74,25 @@ breakingBadGuessListener()
 function ronGuessListener() {
     const guessButton = document.querySelector('#ronGuess')
     guessButton.addEventListener('click', event => {
-        rng % 2 == 1 ? correctAnswer() : wrongAnswer()
+        rng % 2 == 1 ? correctAnswer('Ron Swanson') : wrongAnswer('from Breaking Bad')
     })
 }
 
 ronGuessListener()
 
-function correctAnswer() {
-    answer.innerText = "correct"
+function correctAnswer(source) {
+    answer.innerText = "Correct!"
     if(numberOfQuotesGuessed === 0) {
         correctGuesses += 1
-        createAnswerListEl(`Correct - ${h1El.innerText}`)
-
+        createAnswerListEl(`Correct it was ${source} - ${h1El.innerText}`)
     }
 }
 
-function wrongAnswer() {
-    answer.innerText = "wrong"
+function wrongAnswer(source) {
+    answer.innerText = "Incorrect!"
     if(numberOfQuotesGuessed === 0) {
         wrongGuesses += 1 
-        createAnswerListEl(`Wrong - ${h1El.innerText}`)
+        createAnswerListEl(`Incorrect it was ${source} - ${h1El.innerText}`)
     }
 }
 
@@ -122,10 +122,11 @@ function resetGame() {
     while (answerList.firstChild) {
         answerList.removeChild(answerList.firstChild)
     }
-    scoreText.innerText = ''
+    scoreText.innerText = 'Answer 5 questions go get a score!'
     button.innerText = 'New Quote'
     answer.innerText = ''
-
+    correctGuesses = 0
+    wrongGuesses = 0 
 }
 
 
