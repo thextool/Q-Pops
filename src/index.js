@@ -16,7 +16,6 @@ function getBreakingBadQuote() {
     fetch(url)
         .then(response => response.json())
         .then(quote => appendQuoteBreaking(quote))
-        .then(console.log('bad'))
 }
 
 function getRonSwansonQuote() {
@@ -24,7 +23,6 @@ function getRonSwansonQuote() {
     fetch(url)
         .then(response => response.json())
         .then(quote => appendQuoteRon(quote))
-        .then(console.log('Ron'))
 }
 
 //randomly choosing which API to pull from and adding it to the page
