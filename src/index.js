@@ -19,7 +19,7 @@ function getBreakingBadQuote() {
 }
 
 function getRonSwansonQuote() {
-    const url = "http://ron-swanson-quotes.herokuapp.com/v2/quotes"
+    const url = "https://galvanize-cors.herokuapp.com/http://ron-swanson-quotes.herokuapp.com/v2/quotes"
     fetch(url)
         .then(response => response.json())
         .then(quote => appendQuoteRon(quote))
