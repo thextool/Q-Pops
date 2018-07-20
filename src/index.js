@@ -9,8 +9,6 @@ let wrongGuesses = 0
 let correctGuesses = 0 
 let shouldResetGame = false
 
-//getting quotes from the Breaking Bad and Ron Swanson API
-
 function getBreakingBadQuote() {
     const url = "https://breaking-bad-quotes.herokuapp.com/v1/quotes"
     fetch(url)
@@ -24,8 +22,6 @@ function getRonSwansonQuote() {
         .then(response => response.json())
         .then(quote => appendQuoteRon(quote))
 }
-
-//randomly choosing which API to pull from and adding it to the page
 
 function randomNumberGenerator() {
     return Math.floor((Math.random() * 10) + 1)
@@ -46,8 +42,6 @@ function appendQuoteBreaking(quote) {
     h1El.innerText = `"${quote[0].quote}"`
 }
 
-//getting a new quote from either API when clicking the new quote button
-
 function changeQuoteButton() {
     button.addEventListener('click', event => {
         numberOfQuotesGuessed = 0
@@ -57,8 +51,6 @@ function changeQuoteButton() {
 }
 
 changeQuoteButton()
-
-//correct or wrong click listeners on the images and adding answers to list below
 
 function breakingBadGuessListener() {
     const guessButton = document.querySelector('#breakingGuess')
@@ -102,8 +94,6 @@ function createAnswerListEl(quote) {
     numberOfQuotesGuessed += 1
     endgame()
 }
-
-//resets the game after 5 guesses
 
 function endgame() {
     answerList.childElementCount === 5 ? score() : null
